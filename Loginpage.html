@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+       
+        .form-box {
+            background-color: rgb(185, 181, 181);
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+            margin: 50px auto;
+        }
+        .form-box label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        #submit {
+            background-color: rgb(2, 2, 56);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .footer {
+            margin-top: 100px;
+            background-color: rgb(185, 181, 181);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+    </style>
+    <nav class="nav">
+    <div class="logo">PulsePoint CIS</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="Loginpage.html">Login</a></li>
+      <li><a href="#">About</a></li>
+    <div>
+    <form action="#" method="post">
+    <div class="form-box">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="role">Role: <label>
+         <select name="role" id="role" required>
+                <option value="">--Select Role--</option>
+                <option value="Nurse">Nurse</option>
+                <option value="Admin">Admin<option>
+        </select>
+        <br><br>
+        <label for="ID" name="ID">Practitioner ID</label>
+        <input type="text" placeholder="Enter Practitioner ID" name="ID" id="ID" required>
+        <br><br>
+        <label for="psw">Password</label>
+        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+        <button onclick="togglePassword()" id="psw"></button>
+        <br><br>
+        <label for="psw-repeat">Repeat Password</label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+        <br><br>
+        <button type="submit" id="submit">Register</button>
+    </div>
+    </form>
+    </div>
+    <script>
+        function checkstrongpassword(password) {
+            const minLength = 8;
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasLowerCase = /[a-z]/.test(password);
+            const hasNumbers = /\d/.test(password);
+            const hasSpecialChars = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            return password.length >= minLength && hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChars;
+        }
+        function togglePassword() {
+            const passwordInput = document.getElementById('psw');
+            const toggleButton = document.getElementById('togglePassword');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleButton.textContent = 'Hide Password';
+            } else {
+                passwordInput.type = 'password';
+                toggleButton.textContent = 'Show Password';
+            }
+        }
+
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const username = document.getElementById('username').value;
+            const role = document.getElementById('role').value;
+            const password = document.getElementById('psw').value;
+            const confirmPassword = document.getElementById('psw-repeat').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            if (!checkstrongpassword(password)) {
+                alert('Password must be at least 8 characters long and include uppercase letters, lowercase letters, a number, and a special characters.');
+                return;
+            }
+            if (role === 'Nurse') {
+                window.location.href = 'Nursepage.html';
+            } else if (role === 'Admin') {
+                window.location.href = 'Adminpage.html';
+            } else {
+                alert('Please select a role!');
+            }
+        });
+        document.cookie = "username=; =Thu, 30 FEB 2026 00:00:00 UTC; path=/;"
+        console.log(document.cookie);
+        setTimeout(function() {
+            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }, 1000);
+    </script>
+    <footer class="footer">© 2026 PulsePoint CIS </footer>
+</body>
+</html>

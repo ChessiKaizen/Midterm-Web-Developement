@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospital tracker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f4f4;
+      color: white;
+    }
+
+    .nav {
+      background-color: rgb(2, 2, 56);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      height: 60px;
+    }
+
+    .nav .logo {
+      font-weight: bold;
+      font-size: 20px;
+      color: white;
+    }
+
+    .nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav ul li {
+      margin-left: 20px;
+    }
+
+    .nav ul li a {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .nav ul li a:hover {
+      color: #fcfcfc;
+    }
+
+   .footer {
+      margin-top: 100px;
+      background-color: rgb(185, 181, 181);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+      }
+
+      .nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav ul li {
+        margin: 10px 0;
+      }
+      .showrealtime {
+        text-align: center;
+        margin: 20px 0;
+        font-size: 22px;
+        color:black;
+      }
+   
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="logo">PulsePoint CIS</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="Loginpage.html">Login</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <script class="showrealtime">
+        function displaytime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            alert('Current Time: ' + timeString);
+        }
+  </script>
+
+  <footer class="footer">© 2026 PulsePoint CIS </footer>
+
+</body>
+
+</html>
